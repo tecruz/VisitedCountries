@@ -23,6 +23,22 @@ jobs:
       - name: spotless
         run: ./gradlew spotlessCheck
 
+  detekt:
+    name: Detekt check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4.2.0
+      - name: Set up JDK
+        uses: actions/setup-java@v4.4.0
+        with:
+          distribution: adopt
+          java-version: 17
+      - name: Make Gradle executable
+        run: chmod +x ./gradlew
+      - name: detekt
+        run: ./gradlew detekt
+
   build:
     runs-on: ubuntu-latest
     steps:

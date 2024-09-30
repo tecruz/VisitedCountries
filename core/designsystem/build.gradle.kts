@@ -17,7 +17,6 @@
 plugins {
   id("com.example.visitedcountries.android.library")
   id("com.example.visitedcountries.android.library.compose")
-  id("com.example.visitedcountries.spotless")
 }
 
 android {

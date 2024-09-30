@@ -21,17 +21,19 @@ import com.example.visitedcoutries.model.Country
 
 object PreviewUtils {
 
+  private const val LIST_SIZE = 10
+
   fun mockCountry() = Country(
     countryName = "South Georgia",
     flag = "https://flagcdn.com/w320/gs.png",
     visited = false,
   )
 
-  fun mockCountryList() = List(10) {
+  fun mockCountryList() = List(LIST_SIZE) {
     Country(countryName = "South Georgia$it", flag = "", visited = true)
   }
 
-  fun mockCityList() = List(10) {
+  fun mockCityList() = List(LIST_SIZE) {
     City(name = "City$it", country = "country", favorite = false)
   }
 }

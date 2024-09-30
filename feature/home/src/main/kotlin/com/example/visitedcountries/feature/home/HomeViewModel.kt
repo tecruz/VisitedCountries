@@ -30,7 +30,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-  homeRepository: HomeRepository
+  homeRepository: HomeRepository,
 ) : BaseViewModel() {
   internal val uiState: ViewModelStateFlow<HomeUiState> = viewModelStateFlow(HomeUiState.Loading)
 

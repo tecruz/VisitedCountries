@@ -18,7 +18,6 @@ plugins {
   id("com.example.visitedcountries.android.library")
   id("com.example.visitedcountries.android.library.compose")
   id("com.example.visitedcountries.android.hilt")
-  id("com.example.visitedcountries.spotless")
   alias(libs.plugins.kotlinx.serialization)
 }
 android {

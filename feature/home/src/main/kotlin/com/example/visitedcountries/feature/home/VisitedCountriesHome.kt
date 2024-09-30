@@ -78,29 +78,26 @@ import com.skydoves.landscapist.placeholder.shimmer.ShimmerPlugin
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.toImmutableList
 
-
 @Composable
-fun VisitedCountriesHome(
-  homeViewModel: HomeViewModel = hiltViewModel()
-) {
+fun VisitedCountriesHome(homeViewModel: HomeViewModel = hiltViewModel()) {
   val uiState by homeViewModel.uiState.collectAsStateWithLifecycle()
   val countryList by homeViewModel.countryList.collectAsStateWithLifecycle()
   VisitedCountriesHomeContent(uiState, countryList)
 }
 
 @Composable
-private fun VisitedCountriesHomeContent(
-  uiState: HomeUiState, countryList: List<Country>
-) {
+private fun VisitedCountriesHomeContent(uiState: HomeUiState, countryList: List<Country>) {
   val composeNavigator = currentComposeNavigator
   Column(modifier = Modifier.fillMaxSize()) {
     VisitedCountriesAppBar()
-    VisitedCountriesAutoCompleteTextField(title = stringResource(R.string.search_countries_dropdown_title),
+    VisitedCountriesAutoCompleteTextField(
+      title = stringResource(R.string.search_countries_dropdown_title),
       hintText = stringResource(R.string.search_countries_hint_text),
       entries = countryList.map { it.name },
       onEntrySelected = {
         composeNavigator.navigate(VisitedCountriesScreen.Details(it))
-      })
+      },
+    )
     CountryList(
       uiState = uiState,
       countriesList = countryList.filter { it.visited }.toImmutableList(),
@@ -109,9 +106,7 @@ private fun VisitedCountriesHomeContent(
 }
 
 @Composable
-private fun CountryList(
-  uiState: HomeUiState, countriesList: ImmutableList<Country>
-) {
+private fun CountryList(uiState: HomeUiState, countriesList: ImmutableList<Country>) {
   if (countriesList.isEmpty()) {
     EmptyContent()
   } else {
@@ -134,21 +129,19 @@ private fun CountryList(
 }
 
 @Composable
-private fun CountryCard(
-  country: Country,
-) {
+private fun CountryCard(country: Country) {
   val composeNavigator = currentComposeNavigator
   var palette by remember { mutableStateOf<Palette?>(null) }
   val backgroundColor by palette.paletteBackgroundColor()
 
   Card(
     modifier = Modifier
-        .padding(6.dp)
-        .fillMaxWidth()
-        .testTag("Country")
-        .clickable {
-            composeNavigator.navigate(VisitedCountriesScreen.Details(country.name))
-        },
+      .padding(6.dp)
+      .fillMaxWidth()
+      .testTag("Country")
+      .clickable {
+        composeNavigator.navigate(VisitedCountriesScreen.Details(country.name))
+      },
     shape = RoundedCornerShape(14.dp),
     colors = CardColors(
       containerColor = VisitedCountriesTheme.colors.background,
@@ -160,9 +153,9 @@ private fun CountryCard(
   ) {
     CoilImage(
       modifier = Modifier
-          .align(Alignment.CenterHorizontally)
-          .padding(top = 20.dp)
-          .size(120.dp),
+        .align(Alignment.CenterHorizontally)
+        .padding(top = 20.dp)
+        .size(120.dp),
       imageLoader = { ImageLoader.Builder(LocalContext.current).components { add(SvgDecoder.Factory()) }.build() },
       imageModel = { country.imageUrl },
       imageOptions = ImageOptions(contentScale = ContentScale.Inside),
@@ -185,14 +178,14 @@ private fun CountryCard(
       },
       previewPlaceholder = painterResource(
         id = com.example.visitedcountries.designsystem.R.drawable.country_preview,
-      )
+      ),
     )
 
     Text(
       modifier = Modifier
-          .align(Alignment.CenterHorizontally)
-          .fillMaxWidth()
-          .padding(12.dp),
+        .align(Alignment.CenterHorizontally)
+        .fillMaxWidth()
+        .padding(12.dp),
       text = country.name,
       color = VisitedCountriesTheme.colors.black,
       textAlign = TextAlign.Center,
@@ -207,11 +200,11 @@ private fun EmptyContent() {
   Column(
     modifier = Modifier.fillMaxSize(),
     verticalArrangement = Arrangement.Center,
-    horizontalAlignment = Alignment.CenterHorizontally
+    horizontalAlignment = Alignment.CenterHorizontally,
   ) {
     Icon(
       painter = painterResource(R.drawable.ic_world),
-      contentDescription = stringResource(id = R.string.empty_screen_icon_content_description)
+      contentDescription = stringResource(id = R.string.empty_screen_icon_content_description),
     )
     Text(text = stringResource(R.string.empty_screen_text))
   }
@@ -223,7 +216,8 @@ private fun EmptyContent() {
 private fun VisitedCountriesHomeContentListScreen() {
   VisitedCountriesPreviewTheme {
     VisitedCountriesHomeContent(
-      uiState = HomeUiState.Idle, countryList = PreviewUtils.mockCountryList().toImmutableList()
+      uiState = HomeUiState.Idle,
+      countryList = PreviewUtils.mockCountryList().toImmutableList(),
     )
   }
 }
@@ -234,8 +228,8 @@ private fun VisitedCountriesHomeContentListScreen() {
 private fun VisitedCountriesHomeContentEmptyScreen() {
   VisitedCountriesPreviewTheme {
     VisitedCountriesHomeContent(
-      uiState = HomeUiState.Idle, countryList = emptyList()
+      uiState = HomeUiState.Idle,
+      countryList = emptyList(),
     )
   }
 }
-

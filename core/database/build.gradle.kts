@@ -17,7 +17,6 @@
 plugins {
   id("com.example.visitedcountries.android.library")
   id("com.example.visitedcountries.android.hilt")
-  id("com.example.visitedcountries.spotless")
   alias(libs.plugins.ksp)
 }
 

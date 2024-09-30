@@ -30,6 +30,8 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
       pluginManager.apply {
         apply("com.android.library")
         apply("org.jetbrains.kotlin.android")
+        apply("com.example.visitedcountries.spotless")
+        apply("com.example.visitedcountries.detekt")
       }
 
       dependencies {

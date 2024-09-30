@@ -59,9 +59,7 @@ import com.example.visitedcoutries.model.City
 import kotlinx.collections.immutable.toImmutableList
 
 @Composable
-fun VisitedCountriesDetails(
-  detailsViewModel: DetailsViewModel = hiltViewModel()
-) {
+fun VisitedCountriesDetails(detailsViewModel: DetailsViewModel = hiltViewModel()) {
   val uiState by detailsViewModel.uiState.collectAsStateWithLifecycle()
   val country by detailsViewModel.country.collectAsStateWithLifecycle()
   VisitedCountriesDetailsContent(
@@ -74,15 +72,15 @@ fun VisitedCountriesDetails(
 private fun VisitedCountriesDetailsContent(
   uiState: DetailsUiState,
   country: String?,
-  updateCityFavorite: (City) -> Unit
+  updateCityFavorite: (City) -> Unit,
 ) {
   Column(
     modifier = Modifier
-        .fillMaxSize()
-        .testTag("CountryDetails"),
+      .fillMaxSize()
+      .testTag("CountryDetails"),
   ) {
     DetailsHeader(
-      title = country
+      title = country,
     )
 
     if (uiState is DetailsUiState.Success) {
@@ -96,7 +94,7 @@ private fun VisitedCountriesDetailsContent(
           if (!citySelected.favorite) {
             updateCityFavorite(citySelected.copy(favorite = true))
           }
-        }
+        },
       )
       DetailsList(cities, updateCityFavorite)
     } else {
@@ -105,7 +103,6 @@ private fun VisitedCountriesDetailsContent(
       }
     }
   }
-
 }
 
 @Composable
@@ -130,7 +127,7 @@ private fun DetailsHeader(title: String?) {
         Icon(
           imageVector = Icons.AutoMirrored.Default.ArrowBack,
           contentDescription = "Localized description",
-          tint = VisitedCountriesTheme.colors.white
+          tint = VisitedCountriesTheme.colors.white,
         )
       }
     },
@@ -140,7 +137,7 @@ private fun DetailsHeader(title: String?) {
 @Composable
 private fun DetailsList(cityList: List<City>, updateCityFavorite: (City) -> Unit) {
   LazyColumn(
-    modifier = Modifier.testTag("CountriesList")
+    modifier = Modifier.testTag("CountriesList"),
   ) {
     items(cityList) { city ->
       CityItem(city, updateCityFavorite)
@@ -149,22 +146,19 @@ private fun DetailsList(cityList: List<City>, updateCityFavorite: (City) -> Unit
 }
 
 @Composable
-private fun CityItem(
-  city: City,
-  updateCityFavorite: (City) -> Unit
-) {
+private fun CityItem(city: City, updateCityFavorite: (City) -> Unit) {
   val isFavorite = city.favorite
 
   Row(
     modifier = Modifier
-        .padding(12.dp)
-        .fillMaxWidth()
-        .testTag("City")
+      .padding(12.dp)
+      .fillMaxWidth()
+      .testTag("City"),
   ) {
     Text(
       modifier = Modifier
-          .align(Alignment.CenterVertically)
-          .weight(1f),
+        .align(Alignment.CenterVertically)
+        .weight(1f),
       text = city.name,
       color = VisitedCountriesTheme.colors.black,
       textAlign = TextAlign.Start,
@@ -175,7 +169,7 @@ private fun CityItem(
       checked = isFavorite,
       onCheckedChange = {
         updateCityFavorite(city.copy(favorite = !isFavorite))
-      }
+      },
     ) {
       Icon(
         imageVector = if (isFavorite) {
@@ -183,7 +177,7 @@ private fun CityItem(
         } else {
           Icons.Default.FavoriteBorder
         },
-        contentDescription = null
+        contentDescription = null,
       )
     }
   }
@@ -196,7 +190,7 @@ private fun VisitedCountriesDetailListScreen() {
   VisitedCountriesPreviewTheme {
     VisitedCountriesDetailsContent(
       uiState = DetailsUiState.Success(PreviewUtils.mockCityList().toImmutableList()),
-      country = "Country"
+      country = "Country",
     ) {}
   }
 }

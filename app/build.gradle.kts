@@ -23,6 +23,7 @@ plugins {
   id("com.example.visitedcountries.android.application.compose")
   id("com.example.visitedcountries.android.hilt")
   id("com.example.visitedcountries.spotless")
+  id("com.example.visitedcountries.detekt")
 }
 
 android {

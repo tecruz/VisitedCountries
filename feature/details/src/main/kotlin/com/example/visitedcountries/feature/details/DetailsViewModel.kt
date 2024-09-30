@@ -51,7 +51,7 @@ class DetailsViewModel @Inject constructor(
         val cityList = sortCitiesByFavorite(cities)
         uiState.tryEmit(
           key,
-          DetailsUiState.Success(cityList = cityList)
+          DetailsUiState.Success(cityList = cityList),
         )
       }
     }
@@ -60,12 +60,12 @@ class DetailsViewModel @Inject constructor(
   fun updateCity(city: City) {
     viewModelScope.launch {
       detailsRepository.markCityAsVisited(
-        city = city
+        city = city,
       ).collect { cities ->
         val cityList = sortCitiesByFavorite(cities)
         uiState.tryEmit(
           key,
-          DetailsUiState.Success(cityList = cityList)
+          DetailsUiState.Success(cityList = cityList),
         )
       }
     }

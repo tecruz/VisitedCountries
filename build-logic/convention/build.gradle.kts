@@ -31,6 +31,7 @@ dependencies {
   compileOnly(libs.compose.compiler.gradlePlugin)
   compileOnly(libs.kotlin.gradlePlugin)
   compileOnly(libs.spotless.gradlePlugin)
+  compileOnly(libs.detekt.gradlePlugin)
 }
 
 gradlePlugin {
@@ -62,6 +63,10 @@ gradlePlugin {
     register("spotless") {
       id = "com.example.visitedcountries.spotless"
       implementationClass = "SpotlessConventionPlugin"
+    }
+    register("detekt") {
+      id = "com.example.visitedcountries.detekt"
+      implementationClass = "DetektConventionPlugin"
     }
   }
 }

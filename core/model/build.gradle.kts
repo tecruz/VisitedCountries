@@ -19,7 +19,6 @@ plugins {
   alias(libs.plugins.kotlinx.serialization)
   alias(libs.plugins.kotlin.parcelize)
   alias(libs.plugins.ksp)
-  id("com.example.visitedcountries.spotless")
 }
 
 android {
