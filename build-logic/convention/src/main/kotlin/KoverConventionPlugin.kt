@@ -14,31 +14,18 @@
  * limitations under the License.
  */
 
-import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import com.example.visitedcountries.configureKotlinAndroid
+import com.example.visitedcountries.configureKover
+import kotlinx.kover.gradle.plugin.dsl.KoverProjectExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
-import org.jetbrains.kotlin.gradle.dsl.KotlinAndroidProjectExtension
 
-class AndroidApplicationConventionPlugin : Plugin<Project> {
+class KoverConventionPlugin : Plugin<Project> {
   override fun apply(target: Project) {
     with(target) {
-      with(pluginManager) {
-        apply("com.android.application")
-        apply("org.jetbrains.kotlin.android")
-        apply("com.example.visitedcountries.kover")
-      }
-
-      extensions.configure<BaseAppModuleExtension> {
-        configureKotlinAndroid(this)
-        defaultConfig.targetSdk = 35
-      }
-
-      extensions.getByType<KotlinAndroidProjectExtension>().apply {
-        configureKotlinAndroid(this)
-      }
+      pluginManager.apply("org.jetbrains.kotlinx.kover")
+      val extension = extensions.getByType<KoverProjectExtension>()
+      configureKover(extension)
     }
   }
 }

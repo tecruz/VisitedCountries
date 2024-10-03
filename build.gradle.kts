@@ -25,6 +25,7 @@ plugins {
   alias(libs.plugins.ksp) apply false
   alias(libs.plugins.compose.compiler) apply false
   alias(libs.plugins.hilt.plugin) apply false
-  alias(libs.plugins.spotless)
-  alias(libs.plugins.detekt)
+  alias(libs.plugins.spotless) apply false
+  alias(libs.plugins.detekt) apply false
+  alias(libs.plugins.kover) apply false
 }

@@ -111,4 +111,11 @@ dependencies {
   // cores
   implementation(projects.core.navigation)
   implementation(projects.core.designsystem)
+
+  //kover
+  kover(projects.core.network)
+  kover(projects.core.data)
+  kover(projects.core.database)
+  kover(projects.feature.home)
+  kover(projects.feature.details)
 }

@@ -30,6 +30,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
         apply("org.jetbrains.kotlin.android")
         apply("com.example.visitedcountries.spotless")
         apply("com.example.visitedcountries.detekt")
+        apply("com.example.visitedcountries.kover")
       }
 
       extensions.configure<LibraryExtension> {

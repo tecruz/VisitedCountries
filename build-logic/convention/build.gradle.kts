@@ -32,6 +32,7 @@ dependencies {
   compileOnly(libs.kotlin.gradlePlugin)
   compileOnly(libs.spotless.gradlePlugin)
   compileOnly(libs.detekt.gradlePlugin)
+  compileOnly(libs.kover.gradlePlugin)
 }
 
 gradlePlugin {
@@ -67,6 +68,10 @@ gradlePlugin {
     register("detekt") {
       id = "com.example.visitedcountries.detekt"
       implementationClass = "DetektConventionPlugin"
+    }
+    register("kover"){
+      id = "com.example.visitedcountries.kover"
+      implementationClass = "KoverConventionPlugin"
     }
   }
 }
