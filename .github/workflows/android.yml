@@ -40,6 +40,7 @@ jobs:
         run: ./gradlew detekt
 
   build:
+    name: Build, Tests, Codecov
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -53,39 +54,12 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
 
-      - name: Build with Gradle
-        run: |
-          ./gradlew --scan --stacktrace \
-              :app:assembleDebug
-
-  tests:
-    name: Run tests
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4.2.0
-      - name: Set up JDK
-        uses: actions/setup-java@v4.4.0
-        with:
-          distribution: adopt
-          java-version: 17
-      - name: Make Gradle executable
-        run: chmod +x ./gradlew
       - name: Run tests
         run: ./gradlew app:koverHtmlReportDebug
+
       - name: Upload reports to Codecov
         uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
 
-
-  codecov:
-    name: Upload reports to Codecov
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@main
-      - uses: codecov/codecov-action@v4
-        with:
-          fail_ci_if_error: true
-          token: ${{ secrets.CODECOV_TOKEN }}
