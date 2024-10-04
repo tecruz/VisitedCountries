@@ -72,4 +72,13 @@ jobs:
       - name: Make Gradle executable
         run: chmod +x ./gradlew
       - name: tests
-        run: ./gradlew test
+        run: ./gradlew app:koverHtmlReportDebug
+
+  codecov:
+    name: Upload reports to Codecov
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
