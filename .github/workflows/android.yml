@@ -71,8 +71,14 @@ jobs:
           java-version: 17
       - name: Make Gradle executable
         run: chmod +x ./gradlew
-      - name: tests
+      - name: Run tests
         run: ./gradlew app:koverHtmlReportDebug
+      - name: Upload reports to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          fail_ci_if_error: true
+          token: ${{ secrets.CODECOV_TOKEN }}
+
 
   codecov:
     name: Upload reports to Codecov
@@ -81,4 +87,5 @@ jobs:
       - uses: actions/checkout@main
       - uses: codecov/codecov-action@v4
         with:
+          fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
