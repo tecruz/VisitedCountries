@@ -33,7 +33,7 @@ android {
     applicationId = "com.example.visitedcountries"
     versionCode = Configuration.VERSION_CODE
     versionName = Configuration.VERSION_NAME
-    testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner = "com.example.visitedcountries.test.AppTestRunner"
   }
 
   signingConfigs {
@@ -111,11 +111,17 @@ dependencies {
   // cores
   implementation(projects.core.navigation)
   implementation(projects.core.designsystem)
+  implementation(projects.core.test)
+
+  //test
+  testImplementation(libs.androidx.navigation.testing)
+  testImplementation(libs.robolectric)
 
   //kover
   kover(projects.core.network)
   kover(projects.core.data)
   kover(projects.core.database)
+  kover(projects.core.navigation)
   kover(projects.feature.home)
   kover(projects.feature.details)
 }

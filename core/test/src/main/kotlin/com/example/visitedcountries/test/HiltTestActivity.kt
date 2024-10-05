@@ -14,22 +14,10 @@
  * limitations under the License.
  */
 
-plugins {
-  id("com.example.visitedcountries.android.library")
-  id("com.example.visitedcountries.android.hilt")
-}
+package com.example.visitedcountries.test
 
-android {
-    namespace = "com.example.visitedcountries.test"
-}
+import androidx.activity.ComponentActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-dependencies {
-  implementation(projects.core.model)
-  implementation(libs.kotlinx.coroutines.android)
-  implementation(libs.kotlinx.coroutines.test)
-  implementation(libs.junit)
-  implementation(libs.androidx.test.runner)
-  api(platform(libs.androidx.compose.bom))
-  api(libs.androidx.ui.test.junit4)
-  debugImplementation(libs.androidx.ui.test.manifest)
-}
+@AndroidEntryPoint
+class HiltTestActivity : ComponentActivity()
