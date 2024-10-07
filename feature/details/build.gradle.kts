@@ -22,3 +22,10 @@ plugins {
 android {
     namespace = "com.example.visitedcountries.details"
 }
+
+dependencies {
+  testImplementation(libs.mockito.core)
+  testImplementation(libs.mockito.kotlin)
+  testImplementation(libs.turbine)
+  testImplementation(projects.core.test)
+}

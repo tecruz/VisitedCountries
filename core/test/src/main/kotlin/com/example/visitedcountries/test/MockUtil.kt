@@ -16,6 +16,7 @@
 
 package com.example.visitedcountries.test
 
+import com.example.visitedcoutries.model.City
 import com.example.visitedcoutries.model.Country
 
 object MockUtil {
@@ -27,4 +28,8 @@ object MockUtil {
   )
 
   fun mockCountryList() = listOf(mockCountry())
+
+  fun mockCity() = City("Los Angeles", "USA", false)
+
+  fun mockCityList() = listOf(City("Los Angeles", "USA", false))
 }

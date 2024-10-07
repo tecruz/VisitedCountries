@@ -22,3 +22,11 @@ plugins {
 android {
   namespace = "com.example.visitedcountries.feature.home"
 }
+
+dependencies {
+  // unit test
+  testImplementation(libs.turbine)
+  testImplementation(libs.mockito.core)
+  testImplementation(libs.mockito.kotlin)
+  testImplementation(projects.core.test)
+}

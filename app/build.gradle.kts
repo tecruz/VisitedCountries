@@ -121,7 +121,6 @@ dependencies {
   kover(projects.core.network)
   kover(projects.core.data)
   kover(projects.core.database)
-  kover(projects.core.navigation)
   kover(projects.feature.home)
   kover(projects.feature.details)
 }
