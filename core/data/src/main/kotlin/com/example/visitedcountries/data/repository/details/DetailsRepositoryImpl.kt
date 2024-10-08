@@ -69,8 +69,7 @@ class DetailsRepositoryImpl @Inject constructor(
         onError(message())
       }
     } else {
-      val cities = cityDao.getCityList(country).asDomain()
-      emit(cities)
+      emit(cityList)
     }
   }.flowOn(ioDispatcher)
 
