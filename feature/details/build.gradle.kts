@@ -20,12 +20,17 @@ plugins {
 }
 
 android {
-    namespace = "com.example.visitedcountries.details"
+  namespace = "com.example.visitedcountries.details"
+
+  testOptions.unitTests {
+    isIncludeAndroidResources = true
+  }
 }
 
 dependencies {
   testImplementation(libs.mockito.core)
   testImplementation(libs.mockito.kotlin)
   testImplementation(libs.turbine)
-  testImplementation(projects.core.test)
+  debugImplementation(libs.androidx.ui.test.manifest)
+  api(projects.core.test)
 }

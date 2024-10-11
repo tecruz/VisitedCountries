@@ -21,6 +21,10 @@ plugins {
 
 android {
   namespace = "com.example.visitedcountries.feature.home"
+
+  testOptions.unitTests {
+    isIncludeAndroidResources = true
+  }
 }
 
 dependencies {

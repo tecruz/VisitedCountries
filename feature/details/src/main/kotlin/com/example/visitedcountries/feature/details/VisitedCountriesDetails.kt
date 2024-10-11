@@ -177,7 +177,11 @@ private fun CityItem(city: City, updateCityFavorite: (City) -> Unit) {
         } else {
           Icons.Default.FavoriteBorder
         },
-        contentDescription = null,
+        contentDescription = if (isFavorite) {
+          "FavoriteFilledIcon"
+        } else {
+          "FavoriteBorder"
+        },
       )
     }
   }

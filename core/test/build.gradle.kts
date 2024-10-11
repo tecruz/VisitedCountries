@@ -20,7 +20,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.visitedcountries.test"
+  namespace = "com.example.visitedcountries.test"
 }
 
 dependencies {
@@ -32,4 +32,5 @@ dependencies {
   api(platform(libs.androidx.compose.bom))
   api(libs.androidx.ui.test.junit4)
   debugImplementation(libs.androidx.ui.test.manifest)
+  implementation(libs.robolectric)
 }
