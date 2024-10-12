@@ -31,6 +31,5 @@ dependencies {
   testImplementation(libs.mockito.core)
   testImplementation(libs.mockito.kotlin)
   testImplementation(libs.turbine)
-  debugImplementation(libs.androidx.ui.test.manifest)
   api(projects.core.test)
 }

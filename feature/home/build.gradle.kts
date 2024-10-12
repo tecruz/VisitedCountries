@@ -32,5 +32,5 @@ dependencies {
   testImplementation(libs.turbine)
   testImplementation(libs.mockito.core)
   testImplementation(libs.mockito.kotlin)
-  testImplementation(projects.core.test)
+  api(projects.core.test)
 }
