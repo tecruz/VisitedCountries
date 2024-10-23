@@ -73,15 +73,17 @@ jobs:
 
         run: |
           echo $ENCODED_STRING | base64 -di > $RELEASE_KEYSTORE_PATH
+          ls ${{ github.workspace }}
 
       - name: Build Release apk
         env:
+          RELEASE_KEYSTORE_PATH: ${{ secrets.RELEASE_KEYSTORE_PATH }}
           RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
           RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
         run: |
-          ls ${{ github.workspace }}
           touch local.properties
+          echo -e "\RELEASE_KEYSTORE_PATH=$RELEASE_KEYSTORE_PATH" >> local.properties
           echo -e "\nRELEASE_KEY_ALIAS=$RELEASE_KEY_ALIAS" >> local.properties
           echo -e "\nRELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" >> local.properties
           echo -e "\nRELEASE_KEYSTORE_PASSWORD=$RELEASE_KEYSTORE_PASSWORD" >> local.properties
