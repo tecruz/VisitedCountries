@@ -72,7 +72,7 @@ jobs:
          RELEASE_KEYSTORE_PATH: ${{ secrets.RELEASE_KEYSTORE_PATH }}
 
         run: |
-          echo $ENCODED_STRING | base64 -di > RELEASE_KEYSTORE_PATH
+          echo $ENCODED_STRING | base64 -di > $RELEASE_KEYSTORE_PATH
 
       - name: Build Release apk
         env:
@@ -80,7 +80,12 @@ jobs:
           RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
           RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
           RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
-        run: ./gradlew assembleRelease
+        run: |
+          echo "RELEASE_KEYSTORE_PATH=$RELEASE_KEYSTORE_PATH" > local.properties
+          echo "RELEASE_KEY_ALIAS=$RELEASE_KEY_ALIAS" > local.properties
+          echo "RELEASE_KEY_PASSWORD=$RELEASE_KEY_PASSWORD" > local.properties
+          echo "RELEASE_KEYSTORE_PASSWORD=$RELEASE_KEYSTORE_PASSWORD" > local.properties
+          ./gradlew assembleRelease
 
       - name: Build Release bundle
         env:
