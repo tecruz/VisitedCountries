@@ -72,7 +72,7 @@ jobs:
          RELEASE_KEYSTORE_PATH: ${{ secrets.RELEASE_KEYSTORE_PATH }}
 
         run: |
-          echo $ENCODED_STRING | base64 -di > $RELEASE_KEYSTORE_PATH
+          echo $ENCODED_STRING | base64 -di > app/$RELEASE_KEYSTORE_PATH
           ls ${{ github.workspace }}
 
       - name: Build Release apk
