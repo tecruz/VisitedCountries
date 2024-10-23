@@ -26,6 +26,7 @@
 # Glide optionally depends on AppCompat
 -dontwarn androidx.appcompat.**
 -dontwarn com.example.visitedcountries.preview.PreviewUtils
+-dontwarn com.google.auto.service.AutoService
 
 -keepnames class * implements android.os.Parcelable {
    public static final ** CREATOR;

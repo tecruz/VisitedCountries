@@ -40,7 +40,7 @@ jobs:
         run: ./gradlew detekt
 
   build:
-    name: Build, Tests, Codecov
+    name: Build, Tests, Codecov & Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -65,4 +65,25 @@ jobs:
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Build prodRelease
+        run: ./gradlew bundleRelease
+
+      - name: Sign AAb
+        id: sign
+        uses: r0adkll/sign-android-release@v1
+        with:
+          releaseDirectory: app/build/outputs/bundle/release
+          signingKeyBase64: '${{ secrets.RELEASE_KEYSTORE_PATH }}'
+          alias: '${{ secrets.RELEASE_KEY_ALIAS }}'
+          keyStorePassword: '${{ secrets.RELEASE_KEY_PASSWORD }}'
+          keyPassword: '${{ secrets.RELEASE_KEYSTORE_PASSWORD }}'
+
+      - name: Upload app bundle as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-bundle
+          path: app/build/outputs/bundle/release/app-release.aab
+      - run: 'echo Build status report=${{ job.status }}'
+
 

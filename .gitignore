@@ -47,6 +47,7 @@ app/.idea/
 *.DS_Store
 
 # Keystore files
+/keystores
 *.jks
 
 # External native build folder generated in Android Studio 2.2 and later
