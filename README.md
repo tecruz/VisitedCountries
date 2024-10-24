@@ -12,6 +12,17 @@
   Visited Countries demonstrates modern Android development with Jetpack Compose, Hilt, Coroutines, Flow, Jetpack (Room, ViewModel), and Material Design based on MVVM architecture.
 </p>
 
+## Screenshots
+<img src="https://github.com/user-attachments/assets/146c2d56-6915-4cbb-b449-266eac90b2dc" alt="Screenshot_20241024_112104" width="45%"/>
+<img src="https://github.com/user-attachments/assets/828189f3-04a8-489a-8b14-da2c23e3a064" alt="Screenshot_20241024_112104" width="45%" />
+
+## How to use
+Add this lines to your `local.properties` file:
+
+RELEASE_KEY_ALIAS=YOUR_KEY_ALIAS\
+RELEASE_KEY_PASSWORD=YOUR_KEY_PASSWORD\
+RELEASE_KEYSTORE_PASSWORD=YOUR_KEYSTORE_PASSWORD
+
 ## Tech stack & Open-source libraries
 - Minimum SDK level 21.
 - [Kotlin](https://kotlinlang.org/) based, utilizing [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) + [Flow](https://kotlin.github.io/kotlinx.coroutines/kotlinx-coroutines-core/kotlinx.coroutines.flow/) for asynchronous operations.
